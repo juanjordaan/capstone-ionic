@@ -1,0 +1,43 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<!-- <ion-nav-bar class="bar-dark"> -->
+		<ion-nav-bar>
+			<ion-nav-back-button></ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+			</ion-nav-buttons>
+			<!-- <ion-nav-buttons side="right">
+				<button class="button button-icon button-clear ion-more" ng-click="openPopover($event)"></button>
+			</ion-nav-buttons> -->
+		</ion-nav-bar>
+		<ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left" class="styledMenu">
+		<ion-header-bar ui-sref="app.home" menu-close>
+			<ion-item class="item item-thumbnail">
+				<img src="img/companyLogo2.png" alt="companyLogo"></img>
+			</ion-item>
+		</ion-header-bar>
+		<ion-content>
+			<ion-list>
+				<ion-item menu-close href="#/app/home" class="item item-icon-right">Home <i class="icon ion-ios-arrow-right"></i></ion-item>
+        <ion-item menu-close nav-clear class="item item-icon-right" ng-click="logout()">Logout <i class="icon ion-ios-arrow-right"></i></ion-item>
+
+				<ion-item class="item-divider">Service Provider</ion-item>
+				<ion-item menu-close href="#/app/providerOverview" class="item item-icon-right">Overview <i class="icon ion-ios-arrow-right"></i></ion-item>
+				<ion-item menu-close href="#/app/providerProfile" class="item item-icon-right">Profile <i class="icon ion-ios-arrow-right"></i></ion-item>
+				<ion-item menu-close href="#/app/providerSearch" class="item item-icon-right">Project Search <i class="icon ion-ios-arrow-right"></i></ion-item>
+
+				<ion-item class="item-divider">Project Owner</ion-item>
+				<ion-item menu-close href="#/app/ownerOverview" class="item item-icon-right">Overview <i class="icon ion-ios-arrow-right"></i></ion-item>
+				<ion-item menu-close href="#/app/ownerProject" class="item item-icon-right">New Project <i class="icon ion-ios-arrow-right"></i></ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar>
+			<div class="button-bar">
+				<button class="button button-icon icon ion-ios-home-outline" menu-close ui-sref="app.home">Home</button>
+        <button class="button button-icon icon ion-log-out" on-tap="exitApp()">Exit</button>
+			</div>
+		</ion-footer-bar>
+	</ion-side-menu>
+</ion-side-menus>

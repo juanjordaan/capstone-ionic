@@ -1,0 +1,24 @@
+@import 'common';
+
+.multiselectView{
+  .styledHeaderBar{
+    h1, h2{
+      /*background-color:$primary-bg-color!important;*/
+      font-family: $primary-font-family;
+      color: $primary-text-color!important;
+    }
+  }
+  .styledContent{
+    /*background-color:$primary-bg-color!important;*/
+    .styledList{
+      /*background-color:$primary-bg-color!important;*/
+      .styledListItem{
+        background-color:$primary-bg-color!important;
+        label{
+          font-family: $primary-font-family;
+          color: $primary-text-color!important;
+        }
+      }
+    }
+  }
+}

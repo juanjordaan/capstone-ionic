@@ -1,0 +1,40 @@
+<ion-view>
+  <ion-nav-title>Capstone Freelancer</ion-nav-title>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider">
+        {{vm.feature1.heading}}
+        <span class="badge badge-assertive">{{vm.feature1.label}}</span>
+      </div>
+      <div class="item item-body">
+        <span class="badge">{{vm.feature1.price | currency}}</span>
+        <h3>{{vm.feature1.name}}</h3>
+        <p>{{vm.feature1.description}}</p>
+      </div>
+    </div>
+
+    <div class="list card">
+      <div class="item item-divider">
+        {{vm.feature2.heading}}
+        <span class="badge badge-assertive">{{vm.feature2.label}}</span>
+      </div>
+      <div class="item item-body">
+        <span class="badge">{{vm.feature2.price | currency}}</span>
+        <h3>{{vm.feature2.name}}</h3>
+        <p>{{vm.feature2.description}}</p>
+      </div>
+    </div>
+
+    <div class="list card">
+      <div class="item item-divider">
+        {{vm.feature3.heading}}
+        <span class="badge badge-assertive">{{vm.feature3.label}}</span>
+      </div>
+      <div class="item item-body">
+        <span class="badge">{{vm.feature3.price | currency}}</span>
+        <h3>{{vm.feature3.name}}</h3>
+        <p>{{vm.feature3.description}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

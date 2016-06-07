@@ -1,0 +1,57 @@
+<ion-view>
+  <ion-nav-title>Owner Projects</ion-nav-title>
+  <ion-content>
+    <div class="card" ng-repeat="p in vm.projects">
+      <div class="item item-divider">{{p.name}}</div>
+      <div class="item item-body">
+        <div ng-if="p.status === 'New'">
+          <span class="badge badge-energized label-md">Status: {{p.status}}</span>
+          <p><strong>Created </strong> {{p.createDate | date}}</p>
+        </div>
+        <div ng-if="p.status === 'Started'">
+          <span class="badge badge-balanced label-md">Status: {{p.status}}</span>
+          <p><strong>Started </strong> {{p.startDate | date}}</p>
+        </div>
+        <div ng-if="p.status === 'Completed'">
+          <span class="badge badge-stable label-md">Status: {{p.status}}</span>
+          <p><strong>Completed </strong> {{p.completeDate | date}}</p>
+        </div>
+        <p>
+        {{p.description}}
+        </p>
+        <p>
+          <span  ng-repeat="skill in p.skill" class="badge badge-assertive label-small relativeBadge"><small>{{skill.name}}</small></span>
+        </p>
+
+        <div ng-if="p.status === 'Started'">
+          <h4><strong>Service Provider:</strong></h4>
+          <div class="list card">
+            <div class="item item-avatar">
+              <img ng-src={{p.provider.avatar}} alt="Provider Avatar"/>
+              <p>{{p.provider.firstname}} {{p.provider.lastname}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="p.bids.length">
+          <div><h3><strong>Bids Received:</strong></h3></div>
+          <div ng-repeat="b in p.bids">
+            <div class="list card">
+              <div class="item item-divider item-avatar">
+                <img ng-src={{b.bidder.avatar}} alt="Bidder Avatar"/>
+                <p>{{b.bidder.firstname}} {{b.bidder.lastname}} <button class="button button-calm button-small" ng-click="vm.showBidderForm(b.bidder)">About</button></p>
+              </div>
+              <div class="item item-body">
+                <p>{{b.comment}}</p>
+                <div class="button-bar">
+                  <button class="button button-positive" ng-click="vm.acceptBid(p._id, b.bidder._id, b.comment)">Accept</button>
+                  <button class="button button-assertive" ng-click="vm.declineBid(p._id, b.bidder._id, b.comment)">Decline</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,22 @@
+<ion-view>
+  <ion-nav-title>Project Search</ion-nav-title>
+  <ion-content>
+    <div class="list card" ng-repeat="p in vm.projects">
+      <div class="item item-divider item-thumbnail">
+        <img ng-src={{p.owner.avatar}} alt="Owner Image"/>
+        <p>{{p.owner.company}}</p>
+        <h2>{{p.title}}</h2>
+        <span class="badge badge-assertive">{{p.createDate | date}}</span>
+      </div>
+      <div class="item item-body">
+        <p>{{p.description}}</p>
+        <p>
+          <span ng-repeat="skill in p.skill" class="badge badge-assertive label-small relativeBadge">{{skill.name}}</span>
+        </p>
+        <div class="button-bar" style="padding-top: 10px;">
+          <button class="button button-block button-positive" ng-click="vm.showBidForm(p)">Make Bid</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

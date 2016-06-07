@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@import "www/lib/ionic/scss/variables";
+
+/*@import 'variables';*/
+
+/*.popup-head {
+  background-color : blue;
+}*/
+
+/*.popup-body {
+  background-color : darken(#ef473a, 20%);
+  overflow: inherit !important;
+  text-align: left;
+  position: relative;
+  $popup-width: 500px !default;
+}*/
+
+.styledErrorPopup .popup {
+    /*min-width: 80% !important;*/
+    /*height: 230px;*/
+    width: auto;
+}
+
+/*.styledErrorPopup .popup-title {
+    color: #AAAAAA;
+    font-weight: bold;
+}*/
+
+.styledErrorPopup .popup-body {
+    overflow: inherit !important;
+    text-align: left;
+    position: relative;
+    width: auto;
+
+    li{
+      background-color : darken($assertive, 15%);
+    }
+}
+
+/*.styledErrorPopup .btncode {
+    position: absolute;
+    right: -22px;
+    bottom: -20px;
+    width: 45px;
+    cursor: pointer;
+}*/

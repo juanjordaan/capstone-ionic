@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Bidder</h1>
+    <div class="buttons">
+      <button class="button button-clear icon ion-ios-close-outline button-assertive" ng-click="closeBidderForm()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider item-thumbnail">
+        <img ng-src={{bidder.avatar}} alt="Owner Image"/>
+        <p>{{bidder.firstname}} {{bidder.lastname}}</p>
+      </div>
+      <div class="item item-body">
+        <p>
+          <span ng-repeat="skill in bidder.skill" class="badge badge-assertive label-small relativeBadge">{{skill.name}}</span>
+        </p>
+        <div class="button-bar" style="padding-top: 10px;">
+          <button class="button button-block button-positive" ng-click="closeBidderForm()">Close</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

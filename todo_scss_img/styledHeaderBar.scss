@@ -1,0 +1,11 @@
+@import 'common';
+
+.styledHeaderBar{
+  background-color:$primary-bg-color!important;
+  color: $primary-text-color!important;
+
+  .title.title-center.header-item{
+    font-family: $primary-font-family;
+    color: $primary-text-color;
+  }
+}

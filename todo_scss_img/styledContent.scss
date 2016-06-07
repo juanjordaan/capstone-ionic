@@ -1,0 +1,37 @@
+@import 'common';
+
+.styledContent{
+  background-color:$primary-bg-color!important;
+  color: $primary-text-color;
+
+  label{
+    border: none;
+    span{
+      font-family: $primary-font-family;
+      color: $primary-text-color;
+    }
+    input{
+      font-family: $primary-font-family;
+      background-color: $secondary-bg-color;
+      color: black;
+      text-align: center;
+    }
+    .styledCheckbox{
+      font-family: $primary-font-family;
+      background-color: $primary-bg-color;
+      color: black;
+    }
+
+    .styledCheckbox input:before,
+    .styledCheckbox .checkbox-icon:before {
+      border-color: red;
+      background: red;
+    }
+
+    .styledCheckbox input:checked:before,
+    .styledCheckbox input:checked + .checkbox-icon:before {
+      background: green;
+      border-color: lightgreen;
+    }
+  }
+}

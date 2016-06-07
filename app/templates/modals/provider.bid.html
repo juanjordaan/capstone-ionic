@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">{{bid.project.title}}</h1>
+    <div class="buttons">
+      <button class="button button-clear icon ion-ios-close-outline button-assertive" ng-click="closeBidForm()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row row-center">
+			<div class="col col-center text-left">
+        <form ng-submit="doBid()">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Description</span>
+            <input type="text" ng-model="bid.project.description" disabled></input>
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Comment</span>
+            <textarea min="10" max="5000" rows="10" class="form-control" placeholder="Enter Bid" ng-model="bid.comment" required></textarea>
+          </label>
+
+          <div>
+            <button class="button button-block button-positive" type="submit">Register</button>
+            <button class="button button-block button-positive" ng-click="closeBidForm()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

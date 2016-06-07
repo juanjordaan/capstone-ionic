@@ -1,0 +1,8 @@
+@import 'common';
+
+.styledView{
+  ion-nav-title{
+    font-family: $primary-font-family;
+    color: $primary-text-color;
+  }
+}

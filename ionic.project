@@ -1,0 +1,11 @@
+{
+  "name": "Capstone Freelancer",
+  "app_id": "22a68333",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "app/**/*"
+  ]
+}

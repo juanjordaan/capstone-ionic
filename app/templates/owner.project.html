@@ -1,0 +1,46 @@
+<ion-view>
+  <ion-nav-title>New Project</ion-nav-title>
+  <ion-content>
+    <div class="row row-center">
+			<div class="col col-center text-left">
+        <form ng-submit="vm.createProject()">
+          <div class="list">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Name</span>
+              <input type="text" ng-model="vm.project.name" placeholder="Enter Project Name" required>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Title</span>
+              <input type="text" ng-model="vm.project.title" placeholder="Enter Project Title" required>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Description</span>
+              <textarea min="10" max="5000" rows="10" placeholder="Enter Project Description" ng-model="vm.project.description" required></textarea>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Skills Required</span>
+              <multiselect
+                header-text="Header"
+                items="vm.availableSkills"
+                text-property="name"
+                value-property="_id"
+                is-translate="false"
+                text="Select Skills"
+                modal-template-url="lib/ionic-multiselect/dist/templates/modal-template.html"
+                template-url="lib/ionic-multiselect/dist/templates/item-template.html"
+                value-changed="vm.onValueChanged(value)">
+              </multiselect>
+            </label>
+
+            <div>
+              <button class="button button-block button-positive" type="submit">Create</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

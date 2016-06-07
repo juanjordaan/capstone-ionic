@@ -1,0 +1,35 @@
+<ion-view view-title="Capstone Freelancer" hide-nav-bar="true">
+  <ion-content>
+    <div class="row row-center">
+			<div class="col col-center text-left">
+        <h1 class="animated bounceInDown">Capstone Freelancer</h1>
+        <div id="container" class="animated bounceInLeft">
+          <form ng-submit="doLogin()">
+            <div class="list">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Email</span>
+                <input type="text" name="username" ng-model="credentials.username" required>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Password</span>
+                <input type="password" name="password" ng-model="credentials.password" required>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Remember Me</span>
+                <ion-checkbox ng-model="rememberMe" ng-change="toggleRememberMe()">
+              </label>
+
+              <div class="animated bounceInUp">
+                <!-- <button ng-click="doLoginFacebook()" class="btn btn-block">Connect with Facebook</button> -->
+                <button class="button button-block button-positive" type="submit">Login</button>
+                <button class="button button-outline button-block button-energized" ng-click="register()">Signup</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
