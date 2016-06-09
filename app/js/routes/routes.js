@@ -1,8 +1,5 @@
 angular.module('App')
-.config(['$stateProvider',
-'$urlRouterProvider',
-'$ionicConfigProvider',
-'$compileProvider',
+.config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', '$compileProvider',
 function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content|ms-appx|x-wmapp0):|data:image\/|img\//);
