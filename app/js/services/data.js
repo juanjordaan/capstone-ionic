@@ -4,8 +4,8 @@
   angular.module( 'App')
   .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$resource', 'baseURL', 'httpVerbs'];
-  function dataservice($resource, baseURL, httpVerbs) {
+  dataservice.$inject = ['$resource', 'restAPI', 'httpVerbs'];
+  function dataservice($resource, restAPI, httpVerbs) {
     return {
       countries: countries,
       skills: skills,
@@ -25,63 +25,63 @@
     };
 
     function countries( ){
-      return $resource( baseURL+'/countries', null, httpVerbs );
+      return $resource( restAPI+'/countries', null, httpVerbs );
     }
 
     function skills( ){
-      return $resource( baseURL+'/skills', null, httpVerbs );
+      return $resource( restAPI+'/skills', null, httpVerbs );
     }
 
     function messages( ){
-      return $resource( baseURL+'/messages/:messageId', null, httpVerbs );
+      return $resource( restAPI+'/messages/:messageId', null, httpVerbs );
     }
 
     function messageInbox( ){
-      return $resource( baseURL+'/messages/user/:userId', null, httpVerbs );
+      return $resource( restAPI+'/messages/user/:userId', null, httpVerbs );
     }
 
     function users( ){
-      return $resource( baseURL+'/users/:userId', null, httpVerbs );
+      return $resource( restAPI+'/users/:userId', null, httpVerbs );
     }
 
     function userSkills( ){
-      return $resource( baseURL+'/users/:userId/skills', null, httpVerbs );
+      return $resource( restAPI+'/users/:userId/skills', null, httpVerbs );
     }
 
     function userRegister( ){
-      return $resource( baseURL+'/users/register', null, httpVerbs );
+      return $resource( restAPI+'/users/register', null, httpVerbs );
     }
 
     function projects( ){
-      return $resource( baseURL+'/projects/:id', null, httpVerbs );
+      return $resource( restAPI+'/projects/:id', null, httpVerbs );
     }
 
     function projectBid( ){
-      return $resource( baseURL+'/projects/:id/bid', null, httpVerbs );
+      return $resource( restAPI+'/projects/:id/bid', null, httpVerbs );
     }
 
     function projectsOpen(){
-      return $resource( baseURL+'/projects/open/:userId', null, httpVerbs );
+      return $resource( restAPI+'/projects/open/:userId', null, httpVerbs );
     }
 
     function projectOwner(){
-      return $resource( baseURL+'/projects/owner/:userId', null, httpVerbs );
+      return $resource( restAPI+'/projects/owner/:userId', null, httpVerbs );
     }
 
     function projectProvider(){
-      return $resource( baseURL+'/projects/provider/:userId', null, httpVerbs );
+      return $resource( restAPI+'/projects/provider/:userId', null, httpVerbs );
     }
 
     function dashboard(){
-      return $resource( baseURL+'/dashboard', null, httpVerbs );
+      return $resource( restAPI+'/dashboard', null, httpVerbs );
     }
 
     function login(){
-      return $resource( baseURL+'/login', null, httpVerbs );
+      return $resource( restAPI+'/login', null, httpVerbs );
     }
 
     function logout(){
-      return $resource( baseURL+'/logout', null, httpVerbs );
+      return $resource( restAPI+'/logout', null, httpVerbs );
     }
   }
 })();
