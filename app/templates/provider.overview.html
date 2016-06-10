@@ -2,6 +2,7 @@
   <ion-nav-title>Provider Projects</ion-nav-title>
   <ion-content>
     <ion-list>
+      <div ng-if="vm.projects.length == 0">No Projects have been assigned to you.</div>
       <div class="list card" ng-repeat="p in vm.projects">
         <div class="item item-divider item-avatar">
           <img ng-src={{p.owner.avatar}} alt="Owner Image"/>

@@ -1,6 +1,7 @@
 <ion-view>
   <ion-nav-title>Project Search</ion-nav-title>
   <ion-content>
+    <div ng-if="vm.projects.length == 0">No Projects exist matching any of your skills.</div>
     <div class="list card" ng-repeat="p in vm.projects">
       <div class="item item-divider item-thumbnail">
         <img ng-src={{p.owner.avatar}} alt="Owner Image"/>

@@ -8,5 +8,8 @@
     "ngCordova": [
       "dist/ng-cordova.min.js"
     ]
+  },
+  "dependencies": {
+    "angular-socket-io": "^0.7.0"
   }
 }

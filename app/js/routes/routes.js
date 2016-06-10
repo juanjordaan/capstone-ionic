@@ -30,6 +30,16 @@ function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProv
       }
     }
   })
+  .state('app.messages', {
+    url: "/messages",
+    views: {
+      'viewContent': {
+        templateUrl: "templates/messages.html",
+        controller: 'SocketMessagesController',
+        controllerAs: 'vm'
+      }
+    }
+  })
   .state('app.providerOverview', {
     url: "/providerOverview",
     views: {

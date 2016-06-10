@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-nav-title>Messages</ion-nav-title>
+  <ion-content>
+    <div ng-if="vm.messages.length == 0">No Messages exist</div>
+    <div ng-if="vm.messages.length">
+      <div class="list card" ng-repeat="m in vm.messages">
+        <div class="item item-divider">
+          <p>{{m.title}}</p>
+        </div>
+        <div class="item item-body">
+          <p>{{m.sentDate | date}}</p>
+          <p>{{m.text}}</p>
+          <div class="button-bar">
+            <button class="button button-block button-assertive" ng-click="vm.deleteMessage(m)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

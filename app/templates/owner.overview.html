@@ -1,6 +1,7 @@
 <ion-view>
   <ion-nav-title>Owner Projects</ion-nav-title>
   <ion-content>
+    <div ng-if="vm.projects.length == 0">You have not created projects yet.</div>
     <div class="card" ng-repeat="p in vm.projects">
       <div class="item item-divider">{{p.name}}</div>
       <div class="item item-body">
