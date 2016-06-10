@@ -9,12 +9,17 @@
     var vm = this;
 
     vm.project = {};
-    vm.project.name = 'P14';
+    vm.project.name = '';
     vm.project.owner = AuthenticationService.user._id;
     vm.project.provider = null;
     vm.project.skill = [];
-    vm.project.title = 'P14';
-    vm.project.description = 'P14';
+    vm.project.title = '';
+    vm.project.description = '';
+
+    // Test Code
+    // vm.project.name = 'P14';
+    // vm.project.title = 'P14';
+    // vm.project.description = 'P14';
 
     vm.availableSkills = [];
 
