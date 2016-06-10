@@ -1,4 +1,4 @@
-.styledSidebar {
+ion-side-menu{
   /*color: $primary-text-color;
   background-color: $primary-bg-color;*/
 
@@ -11,6 +11,7 @@
     padding: 0;
 
     .item{
+      margin-top: -10px;
       background-color: transparent;
       color: transparent;
       border: none;
@@ -18,8 +19,8 @@
       height: 150px;
 
       img{
+        margin-top: -10px;
         height: 100%;
-        /*width: 100%;*/
       }
     }
   }

@@ -1,0 +1,14 @@
+@import 'common';
+
+ion-header-bar{
+  background-color:$primary-bg-color!important;
+  color: $primary-text-color!important;
+
+  .title{
+    color: $primary-text-color!important;
+  }
+
+  .button{
+    color:$primary-text-color!important;;
+  }
+}

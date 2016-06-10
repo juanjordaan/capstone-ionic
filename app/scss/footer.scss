@@ -1,0 +1,13 @@
+@import 'common';
+
+.bar-footer{
+  border:none;
+  background-color:$secondary-bg-color;
+  .button-bar{
+    background:$secondary-bg-color;
+    .button{
+      background:$secondary-bg-color;
+      color:$primary-text-color;
+    }
+  }
+}

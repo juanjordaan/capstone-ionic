@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "www/lib/ionic/scss/variables", "common";
+
+.errorPopup .popup {
+  width: auto;
+}
+
+.errorPopup .popup-head {
+  background-color : $secondary-bg-color;
+}
+
+.errorPopup .popup-body {
+  overflow: inherit !important;
+  text-align: left;
+  position: relative;
+  width: auto;
+
+  li{
+    background-color : darken($assertive, 15%);
+  }
+}
+
+/*.errorPopup .btncode {
+
+}*/

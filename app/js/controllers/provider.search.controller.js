@@ -40,7 +40,7 @@
           $scope.errorPopup = $ionicPopup.alert({
             template : tmp,
             title: 'Errors',
-            cssClass: 'styledErrorPopup'
+            cssClass: 'errorPopup'
           });
 
           $scope.closeErrorPopup = function() { $scope.errorPopup.close(); };
@@ -85,7 +85,7 @@
             $scope.errorPopup = $ionicPopup.alert({
               template : tmp,
               title: 'Errors',
-              cssClass: 'styledErrorPopup'
+              cssClass: 'errorPopup'
             });
 
             $scope.closeErrorPopup = function() { $scope.errorPopup.close(); };

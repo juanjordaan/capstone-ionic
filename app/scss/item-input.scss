@@ -1,0 +1,54 @@
+.item-input {
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  /*.input-label {
+    color: $light;
+  }*/
+
+  input {
+    margin-right: 30px;
+    padding-left: 5px;
+    border:none;
+  }
+}
+
+.item-checkbox{
+  border:none;
+}
+
+.item-checkbox input:before,
+.item-checkbox .checkbox-icon:before {
+  border-color: #ef473a;
+  background: transparent;
+}
+
+.item-checkbox input:checked:before,
+.item-checkbox input:checked + .checkbox-icon:before {
+  background: #33cd5f;
+  border-color: lightgreen;
+}
+
+.item-input-wrapper {
+  /*background: $darker;*/
+
+  input {
+    /*color: $lighter;*/
+  }
+}
+
+// Remove a bottom border
+.tabs-striped .tabs {
+  border-bottom: 0;
+}
+
+.toggle .track {
+  /*background-color: $dark;*/
+  /*border-color: $darker;*/
+}
+.toggle input:checked + .track {
+  /*background-color: $positive;*/
+  /*border-color: $positive;*/
+}
