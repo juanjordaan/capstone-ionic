@@ -5,7 +5,7 @@
 /*@import 'variables';*/
 
 /*.popup-head {
-  background-color : blue;
+  background-color : #AAAAAA;
 }*/
 
 /*.popup-body {
@@ -26,6 +26,10 @@
     color: #AAAAAA;
     font-weight: bold;
 }*/
+
+.styledErrorPopup .popup-head {
+  background-color : #AAAAAA;
+}
 
 .styledErrorPopup .popup-body {
     overflow: inherit !important;

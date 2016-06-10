@@ -12,7 +12,7 @@ function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProv
     url: '/app',
     abstract: true,
     controller: 'AppController',
-    templateUrl: 'templates/menu.html'
+    templateUrl: 'templates/sidebar.html'
   })
   .state('login', {
     url: "/login",
