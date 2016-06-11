@@ -1,0 +1,2 @@
+/Users/juan/dev/exams/3_dev/web/coursera/fswd/06_capstone/capstone-ionic3/platforms/ios/build/emulator/Capstone\ Freelancer.app
+/Users/juan/dev/exams/3_dev/web/coursera/fswd/06_capstone/capstone-ionic3/platforms/android/build/outputs/apk/android-debug.apk
