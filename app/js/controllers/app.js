@@ -4,8 +4,8 @@
   angular.module('App')
   .controller('AppController', AppController);
 
-  AppController.$inject = [ '$ionicPopup', '$scope', '$state', 'dataservice', 'AuthenticationService', '$ionicModal', '$timeout', '$ionicPlatform', '$cordovaCamera', '$cordovaImagePicker', '$localStorage', '$ionicSideMenuDelegate', 'MessageInbox'];
-  function AppController ( $ionicPopup, $scope, $state, dataservice, AuthenticationService, $ionicModal, $timeout, $ionicPlatform, $cordovaCamera, $cordovaImagePicker, $localStorage, $ionicSideMenuDelegate, MessageInbox ){
+  AppController.$inject = [ '$ionicPopup', '$scope', '$state', 'dataservice', 'AuthenticationService', '$ionicModal', '$timeout', '$ionicPlatform', '$cordovaCamera', '$cordovaImagePicker', '$localStorage', '$ionicSideMenuDelegate', 'MessageInbox', 'SpinnerService'];
+  function AppController ( $ionicPopup, $scope, $state, dataservice, AuthenticationService, $ionicModal, $timeout, $ionicPlatform, $cordovaCamera, $cordovaImagePicker, $localStorage, $ionicSideMenuDelegate, MessageInbox, SpinnerService ){
     $scope.credentials = AuthenticationService.getCredentials();
     $scope.rememberMe = AuthenticationService.rememberMe ? true : false;
 
@@ -36,25 +36,31 @@
     $scope.errors = [];
     var okPopup;
     // $scope.errorPopup;
+    $scope.mainSpinner = SpinnerService.isShow();
 
+    $scope.mainSpinner = SpinnerService.show();
     dataservice.countries().list().$promise.then(
-      function(response){ $scope.countries = response; },
       function(response){
-         $ionicPlatform.ready( function(){
-           var tmp = '<ul class="list">';
-           for( var error in $scope.errors ){
-             tmp += '<li class="item"><i class="icon ion-alert"></i> ' + response.status + ' ' + response.statusText + '</li>';
-           }
-           tmp += '</ul>';
+        $scope.countries = response;
+        $scope.mainSpinner = SpinnerService.hide();
+      },
+      function(response){
+        $scope.mainSpinner = SpinnerService.hide();
+        $ionicPlatform.ready( function(){
+          var tmp = '<ul class="list">';
+          for( var error in $scope.errors ){
+            tmp += '<li class="item"><i class="icon ion-alert"></i> ' + response.status + ' ' + response.statusText + '</li>';
+          }
+          tmp += '</ul>';
 
-           $scope.errorPopup = $ionicPopup.alert({
-             template : tmp,
-             title: 'Errors',
-             cssClass: 'errorPopup'
-           });
+          $scope.errorPopup = $ionicPopup.alert({
+            template : tmp,
+            title: 'Errors',
+            cssClass: 'errorPopup'
+          });
 
-           $scope.closeErrorPopup = function() { $scope.errorPopup.close(); };
-         });
+          $scope.closeErrorPopup = function() { $scope.errorPopup.close(); };
+        });
       }
     );
 
@@ -62,16 +68,19 @@
     $scope.queryCountry = queryCountry;
 
     $scope.logout = function(){
+      $scope.mainSpinner = SpinnerService.show();
       AuthenticationService.logout();
       if($ionicSideMenuDelegate.isOpen()){
         $ionicSideMenuDelegate.toggleLeft(false);
       }
       MessageInbox.disconnect();
+      $scope.mainSpinner = SpinnerService.hide();
       $state.go('login');
     };
 
     $scope.loggedIn = function(){return AuthenticationService.isLogged};
     $scope.doLogin = function(){
+      $scope.mainSpinner = SpinnerService.show();
       dataservice.login().post($scope.credentials).$promise.then(
         function(response){
           AuthenticationService.user = response;
@@ -82,10 +91,11 @@
           AuthenticationService.saveRememberMe($scope.rememberMe);
           $scope.credentials = AuthenticationService.getCredentials();
           MessageInbox.connect($scope.credentials);
-
+          $scope.mainSpinner = SpinnerService.hide();
           $state.go('app.home');
         },
         function(response){
+          $scope.mainSpinner = SpinnerService.hide();
           AuthenticationService.isLogged = false;
           $scope.errors = response.data;
           $ionicPlatform.ready( function(){
@@ -115,6 +125,7 @@
     $scope.register = function () { $scope.registerform.show(); };
     $scope.doRegister = function () {
       // console.log('Doing registration', $scope.user );
+      $scope.mainSpinner = SpinnerService.show();
       $scope.user.username = $scope.user.email;
       dataservice.userRegister().post($scope.user).$promise.then(
         function(response){
@@ -122,6 +133,7 @@
           $scope.user._id = response._id;
           $scope.credentials.username = $scope.user.email;
           $scope.credentials.password = $scope.user.password;
+          $scope.mainSpinner = SpinnerService.hide();
           $timeout(function () { $scope.closeRegister(); }, 1000 );
 
           $scope.message = 'You are successfully registered.';
@@ -139,6 +151,7 @@
         },
         function(response){
           // console.log('response.data = ' + JSON.stringify(response.data));
+          $scope.mainSpinner = SpinnerService.hide();
           $scope.errors = response.data;
           $ionicPlatform.ready( function(){
             var tmp = '<ul class="list">';

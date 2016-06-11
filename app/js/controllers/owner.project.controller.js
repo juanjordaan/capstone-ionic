@@ -4,8 +4,8 @@
   angular.module('App')
   .controller('OwnerProjectController', OwnerProjectController);
 
-  OwnerProjectController.$inject = ['dataservice', 'AuthenticationService', '$scope', '$ionicPlatform', '$state', '$ionicPopup'];
-  function OwnerProjectController(dataservice, AuthenticationService, $scope, $ionicPlatform, $state, $ionicPopup) {
+  OwnerProjectController.$inject = ['dataservice', 'AuthenticationService', '$scope', '$ionicPlatform', '$state', '$ionicPopup', 'SpinnerService'];
+  function OwnerProjectController(dataservice, AuthenticationService, $scope, $ionicPlatform, $state, $ionicPopup, SpinnerService) {
     var vm = this;
 
     vm.project = {};
@@ -15,6 +15,7 @@
     vm.project.skill = [];
     vm.project.title = '';
     vm.project.description = '';
+    $scope.mainSpinner = SpinnerService.isShow();
 
     // Test Code
     // vm.project.name = 'P14';
@@ -30,10 +31,15 @@
     var okPopup;
 
     dataservice.skills().list().$promise.then(
-      function(response){ vm.availableSkills = response; },
+      // $scope.mainSpinner = SpinnerService.show();
+      function(response){
+        vm.availableSkills = response;
+        // $scope.mainSpinner = SpinnerService.hide();
+      },
       function(response){
         console.log('response.data = ' + JSON.stringify(response.data));
         vm.errors = response.data;
+        // $scope.mainSpinner = SpinnerService.hide();
 
         $ionicPlatform.ready( function(){
           var tmp = '<ul class="list">';
@@ -55,9 +61,11 @@
     );
 
     function createProject(){
+      // $scope.mainSpinner = SpinnerService.show();
       dataservice.projects().post(vm.project).$promise.then(
         function(response){
           $scope.message = 'Project created';
+          // $scope.mainSpinner = SpinnerService.hide();
           $ionicPlatform.ready( function () {
             okPopup = $ionicPopup.show({
               templateUrl: 'templates/modals/ok.popup.html',
@@ -69,6 +77,7 @@
           });
         },
         function(response){
+          // $scope.mainSpinner = SpinnerService.hide();
           console.log('response.data = ' + JSON.stringify(response.data));
           if(Array.isArray(response.data)){ console.log('array of errors'); vm.errors = response.data; }
           else { vm.errors = [response.data.message]; }
