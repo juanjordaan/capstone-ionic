@@ -4,24 +4,23 @@
   angular.module('App')
   .controller('ProviderOverviewController', ProviderOverviewController);
 
-  ProviderOverviewController.$inject = ['dataservice', 'AuthenticationService', '$ionicPopup', '$timeout', '$ionicPlatform', 'SpinnerService'];
-  function ProviderOverviewController(dataservice, AuthenticationService, $ionicPopup, $timeout, $ionicPlatform, SpinnerService) {
+  ProviderOverviewController.$inject = ['$scope', 'dataservice', 'AuthenticationService', '$ionicPopup', '$timeout', '$ionicPlatform', 'spinnerService'];
+  function ProviderOverviewController($scope, dataservice, AuthenticationService, $ionicPopup, $timeout, $ionicPlatform, spinnerService) {
     var vm = this;
 
     vm.projects = [];
     vm.errors = [];
-    $scope.mainSpinner = SpinnerService.isShow();
 
-    $scope.mainSpinner = SpinnerService.show();
+    spinnerService.showAll();
     dataservice.projectProvider().list({userId:AuthenticationService.user._id}).$promise.then(
       function(response){
         vm.projects = response;
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
       },
       function(response){
         console.log('error response.data = ' + JSON.stringify(response.data));
         vm.errors = response.data;
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
 
         $ionicPlatform.ready( function(){
           var tmp = '<ul class="list">';

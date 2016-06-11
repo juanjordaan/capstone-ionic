@@ -4,8 +4,8 @@
   angular.module('App')
   .controller('ProviderProfileController', ProviderProfileController);
 
-  ProviderProfileController.$inject = ['dataservice', 'AuthenticationService', '$scope', '$ionicPopup', '$ionicPlatform', 'SpinnerService'];
-  function ProviderProfileController(dataservice, AuthenticationService, $scope, $ionicPopup, $ionicPlatform, SpinnerService) {
+  ProviderProfileController.$inject = ['dataservice', 'AuthenticationService', '$scope', '$ionicPopup', '$ionicPlatform', 'spinnerService'];
+  function ProviderProfileController(dataservice, AuthenticationService, $scope, $ionicPopup, $ionicPlatform, spinnerService) {
     var vm = this;
 
     vm.skills = [];
@@ -16,19 +16,17 @@
 
     vm.errors = [];
     var okPopup;
-    
-    $scope.mainSpinner = SpinnerService.isShow();
 
-    $scope.mainSpinner = SpinnerService.show();
+    spinnerService.showAll();
     dataservice.skills().list().$promise.then(
       function(response){
         vm.availableSkills = response;
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
       },
       function(response){
-        console.log('response.data = ' + JSON.stringify(response.data));
+        // console.log('response.data = ' + JSON.stringify(response.data));
         vm.errors = response.data;
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
 
         $ionicPlatform.ready( function(){
           var tmp = '<ul class="list">';
@@ -49,7 +47,7 @@
       }
     );
 
-    $scope.mainSpinner = SpinnerService.show();
+    spinnerService.showAll();
     dataservice.userSkills().list({'userId':AuthenticationService.user._id}).$promise.then(
       function(response){
         vm.skills = response;
@@ -57,19 +55,19 @@
         for(var s in vm.skills ){
           for(var as in vm.availableSkills){
             if(vm.availableSkills[as].name === vm.skills[s].name){
-              console.log('availableSkills/skills match');
+              // console.log('availableSkills/skills match');
               vm.availableSkills[as].checked=true;
               break;
             }
           }
         }
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
       },
       function(response){
-        console.log('response = ' + JSON.stringify(response));
+        // console.log('response = ' + JSON.stringify(response));
         vm.errors = response.data;
         console.log('vm.errors = ' + JSON.stringify(vm.errors));
-        $scope.mainSpinner = SpinnerService.hide();
+        spinnerService.hideAll();
 
         $ionicPlatform.ready( function(){
           var tmp = '<ul class="list">';
@@ -91,11 +89,11 @@
     );
 
     function updateSkills(){
-      $scope.mainSpinner = SpinnerService.show();
+      spinnerService.showAll();
       dataservice.userSkills().put({'userId':AuthenticationService.user._id}, vm.skills).$promise.then(
         function(response){
           $scope.message = 'Your skills have been updated.';
-          $scope.mainSpinner = SpinnerService.hide();
+          spinnerService.hideAll();
 
           $ionicPlatform.ready( function () {
             okPopup = $ionicPopup.show({
@@ -110,7 +108,7 @@
         function(response){
           vm.errors = response.data;
           console.log('vm.errors = ' + JSON.stringify(vm.errors));
-          $scope.mainSpinner = SpinnerService.hide();
+          spinnerService.hideAll();
 
           $ionicPlatform.ready( function(){
             var tmp = '<ul class="list">';

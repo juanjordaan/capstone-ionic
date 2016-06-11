@@ -4,21 +4,19 @@
   angular.module('App')
   .controller('SocketMessagesController', SocketMessagesController);
 
-  SocketMessagesController.$inject = ['MessageInbox', '$ionicModal', '$scope', 'SpinnerService']
-  function SocketMessagesController(MessageInbox, $ionicModal, $scope, SpinnerService){
+  SocketMessagesController.$inject = ['MessageInbox', '$ionicModal', '$scope', 'spinnerService']
+  function SocketMessagesController(MessageInbox, $ionicModal, $scope, spinnerService){
     var vm = this;
 
     vm.messages = MessageInbox.getMessages()
-    $scope.mainSpinner = SpinnerService.isShow();;
-
     vm.deleteMessage = deleteMessage;
 
     function deleteMessage(message){
-      $scope.mainSpinner = SpinnerService.show();
+      spinnerService.showAll();
       console.log('deleteing message');
       MessageInbox.deleteMessage(message);
       closeMessage();
-      $scope.mainSpinner = SpinnerService.hide();
+      spinnerService.hideAll();
     }
   }
 })();

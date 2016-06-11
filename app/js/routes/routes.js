@@ -19,6 +19,11 @@ function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProv
     templateUrl: "templates/login.html",
     controller: 'AppController'
   })
+  // .state('register', {
+  //   url: "/register",
+  //   templateUrl: "templates/register.html",
+  //   controller: 'RegisterController'
+  // })
   .state('app.home', {
     url: "/home",
     cache: false,
@@ -32,6 +37,7 @@ function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProv
   })
   .state('app.messages', {
     url: "/messages",
+    cache: false,
     views: {
       'viewContent': {
         templateUrl: "templates/messages.html",
@@ -42,6 +48,7 @@ function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProv
   })
   .state('app.providerOverview', {
     url: "/providerOverview",
+    cache: false,
     views: {
       'viewContent': {
         templateUrl: "templates/provider.overview.html",

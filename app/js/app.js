@@ -4,7 +4,7 @@
 // 'App' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('App', ['ionic', 'ngCordova', 'ngResource', 'ngAnimate', 'ionic-multiselect', 'btford.socket-io'])
-.run(['$ionicPlatform', '$sqliteService', function($ionicPlatform, $sqliteService) {
+.run(['$ionicPlatform', '$sqliteService', '$rootScope', '$ionicLoading', function($ionicPlatform, $sqliteService, $rootScope, $ionicLoading) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,5 +22,37 @@ angular.module('App', ['ionic', 'ngCordova', 'ngResource', 'ngAnimate', 'ionic-m
 
     //Load the Pre-populated database, debug = true
     $sqliteService.preloadDataBase(true);
+  });
+
+  $rootScope.$on('loading:show', function () {
+    $ionicLoading.show({ template: '<ion-spinner></ion-spinner> Loading ...' });
+  });
+
+  $rootScope.$on( 'loading:hide', function () {
+    $ionicLoading.hide();
+  });
+
+  $rootScope.$on('$stateChangeStart', function () {
+    console.log( 'Loading ...' );
+    $rootScope.$broadcast( 'loading:show' );
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function () {
+    console.log( 'done' );
+    $rootScope.$broadcast( 'loading:hide' );
+  });
+
+  $rootScope.$on('$stateChangeError', function ( event, toState, toParams, fromState, fromParams, error ) {
+    console.log( 'error - $stateChangeError : ' + angular.toJson( error) );
+    $rootScope.$broadcast( 'loading:hide' );
+  });
+
+  $rootScope.$on('$stateNotFound', function ( event, unfoundState, fromState, fromParams ) {
+    console.log( 'error - $stateNotFound' );
+    console.log( unfoundState.to ); // "lazy.state"
+    console.log( unfoundState.toParams ); // {a:1, b:2}
+    console.log( unfoundState.options ); // {inherit:false} + default options
+
+    $rootScope.$broadcast( 'loading:hide' );
   });
 }]);

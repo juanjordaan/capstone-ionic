@@ -33,7 +33,7 @@
       console.log('fetchAllMessages');
       socket.emit('fetchAllMessages', '', function (response) {
         messages = response.payload;
-        console.log('TODO : Growl for ' + messages.length + ' pulled messages');
+        //console.log('TODO : Growl for ' + messages.length + ' pulled messages');
         if(messages.length == 0){
           $cordovaToast
           .show( 'No new messages', 'long', 'top' )
