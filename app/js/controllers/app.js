@@ -24,13 +24,13 @@
     $scope.user.username = '';
 
     // Test code
-    $scope.user.email = 'juan.jordaan1234@gmail.com';
-    $scope.user.firstname = 'Juan';
-    $scope.user.lastname = 'Jordaan';
-    $scope.user.company = 'Private';
-    $scope.user.telephone = '+12987654321';
-    $scope.user.password = '123';
-    $scope.confirmPassword = '123';
+    // $scope.user.email = 'juan.jordaan1234@gmail.com';
+    // $scope.user.firstname = 'Juan';
+    // $scope.user.lastname = 'Jordaan';
+    // $scope.user.company = 'Private';
+    // $scope.user.telephone = '+12987654321';
+    // $scope.user.password = '123';
+    // $scope.confirmPassword = '123';
 
     $scope.errors = [];
     var okPopup;
